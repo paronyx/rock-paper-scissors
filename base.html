@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>rock-paper-scissors</title>
+    </head>
+    <body>
+        <script>
+            let outcomes = ['rock','paper','scissors'];
+            function computerPlay() {
+                let outcome = outcomes[Math.floor(Math.random()*outcomes.length)];
+                return outcome;
+            }
+            let playerScore = 0;
+            let computerScore = 0;
+            function playRound(playerSelection,computerSelection) {
+                if (playerSelection === computerSelection) {
+                    alert ('It\'s a Tie! Let\'s try again');
+                } else if (playerSelection==='rock' && computerSelection=='paper') {
+                    alert ('You Lose! Paper beats Rock');
+                    ++computerScore;
+                } else if (playerSelection==='rock' && computerSelection=='scissors') {
+                    alert ('You Win! Rock beats Scissors');
+                    ++playerScore;
+                } else if (playerSelection==='paper' && computerSelection=='rock') {
+                    alert ('You Win! Paper beats Rock');
+                    ++playerScore;
+                } else if (playerSelection==='paper' && computerSelection=='scissors') {
+                    alert ('You Lose! Scissors beats Paper');
+                    ++computerScore;
+                } else if (playerSelection==='scissors' && computerSelection=='rock') {
+                    alert ('You Lose! Rock beats Scissors');
+                    ++computerScore;
+                } else if (playerSelection==='scissors' && computerSelection=='paper') {
+                    alert ('You Win! Scissors beat Paper');
+                    ++playerScore;
+                } else {
+                    alert ('Please enter Rock, Paper or Scissors.');
+                }
+            }
+            function game() {
+                for (i=0; i<5; i++){
+                    computerSelection = computerPlay();
+                    playerSelection = prompt('Enter your choice: ');
+                    playerSelection = playerSelection.toLowerCase();
+                    playRound(playerSelection,computerSelection);
+                }
+                if (computerScore<playerScore) {
+                    alert('You Won! :) Your Score is '+playerScore);
+                } else if (computerScore>playerScore) {
+                    alert('You Lost! :( Your Score is '+playerScore);
+                } else {
+                    alert('It\'s a tie');
+                }
+            }
+        </script>    
+    </body>
+</html>
